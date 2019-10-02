@@ -11,64 +11,49 @@
                 border-color: white;
                 color: yellow;}
   </style>
-      
-  <script>    
+  <script>
       function display(number){
 document.getElementById("decimal_input").innerHTML=number
        var bin = dec2bin(number)   
 document.getElementById("binary_output").innerHTML=bin
-      }
-        
-      function dec2bin(decimal){
-          var binary_numbers = ['0000', '0001', '0010', '0011', '0100','0101', '0110', '0111', '1000', '1001']
-          return (binary_numbers[decimal])
           
 document.getElementById("bin2ssd_input").innerHTML=bin
        var ssd = bin2ssd(bin)   
 document.getElementById("bin2ssd_output").innerHTML=ssd  
           
 document.getElementById("illuminate_input").innerHTML=ssd
-       illuminate(ssd)
+          
 document.getElementById("illuminate_output").innerHTML='done'
-          
-      }
-          
-    function bin2ssd(bin){
-        
-        return ('1000000')
-        
-          var w = false
-          var x = false
-          var y = false
-          var z = false
-          
-        if (binary[0] == '1') {w = true}
-        if (binary[0] == '2') {x = true}
-        if (binary[0] == '3') {y = true}
-        if (binary[0] == '4') {z = true}
-          
-        var a = !w&x&y&z || w&!x&!y || !x&!y&!z || !w&y
-        var b = false
-        var c = false
-        var d = false
-        var e = false
-        var f = false
-        var g = false
-        
-        var output = ''
-        if (a){output = output + '1'} else {output = output + '0'}
-        if (b){output = output + '1'} else {output = output + '0'} 
-        if (c){output = output + '1'} else {output = output + '0'}
-        if (d){output = output + '1'} else {output = output + '0'}
-        if (e){output = output + '1'} else {output = output + '0'}
-        if (f){output = output + '1'} else {output = output + '0'}
-        if (g){output = output + '1'} else {output = output + '0'}
       }
       
-      function illuminate() {
-          
+      function dec2bin (decimal){
+          var binary_numbers = ['0000', '0001', '0010', '0011', '0100','0101', '0110', '0111', '1000', '1001']
+          return (binary_numbers[decimal])
       }
-          
+      
+    function bin2ssd(binary){
+        
+        return ('1000000')
+
+      }
+      
+      function dec2bin2 (decimal){
+      
+      var quotient = decimal
+      var output = ''
+      
+      
+    while (quotient > 0) {
+        remainder = quotient % 2
+        if (remainder == 1)
+        {output ='1' + output}
+        else
+        {output = '0' + output}
+        
+        quotient = Math.floor (quotient/2)
+      }
+      
+      }
       
   </script>
   </head>
@@ -104,15 +89,14 @@ document.getElementById("illuminate_output").innerHTML='done'
             </td>
           
             <td class="blackbox"><h3>Binary to SSD Signals</h3>
-                <p id = "binary2ssd_input"></p>
-                <p id = "binary2ssd_output"></p>
-                </td>
+                <p id = "bin2ssd_input"></p>
+                <p id = "bin2ssd_output"></p>
+            </td>
           
           <td class="blackbox"><h3>Illuminate Segments</h3>
                 <p id = "illuminate_input"></p>
                 <p id = "illuminate_output"></p>
-              </td>
-          
+            </td>
           </tr>
       </table>
       
